@@ -1,43 +1,28 @@
 <template>
-  <div class="portfolio-slug">
-    <header class="article header">
-      <div id="hero-image" class="hero is-large" :style="{ backgroundImage: `url(https:${post.fields.heroImage.fields.file.url}?fit=scale&w=1300)`}">
-        <div class="hero-body"></div>
-        <!-- <img
-          :src="`${post.fields.heroImage.fields.file.url}?fit=scale&w=350&h=196`"
-          :srcset="`${post.fields.heroImage.fields.file.url}?w=350&h=87&fit=fill 350w, ${post.fields.heroImage.fields.file.url}?w=1000&h=250&fit=fill 1000w, ${post.fields.heroImage.fields.file.url}?w=2000&h=500&fit=fill 2000w`"
-          size="100vw"
-          :alt="post.fields.heroImage.fields.description"
-          height="500px"
-        > -->
-      </div>
-    </header>
-
-    <section class="section">
-      <div class="container">
-        <section class="columns">
-          <div class="column">
-            <h2 class="title is-2">{{ post.fields.title }}</h2>
-          </div>
-        </section>
-        <section class="columns">
-          <div class="column">
+  <div class="article-slug">
+    <article>
+      <header class="has-text-centered">
+        <!-- {{ post.fields }} -->
+        <p class="title is-1">
+          {{ post.fields.title }}
+        </p>
+        <section class="flex flex-j-center flex-center">
+          <div>
             {{ ( new Date(post.fields.publishDate)).toDateString() }}
           </div>
-          <div class="column tags">
+          <div class="tags-container">
             <span v-for="tag in post.fields.tags" :key="tag" class="tag is-rounded">
               {{ tag }}
             </span>
           </div>
         </section>
-        <section>
-          <div class="content">
-            <div v-html="$md.render(post.fields.body)"></div>
-          </div>
-        </section>
+          <!-- <img :src="post.fields.thumbnail.fields.file.url" width="320"/> -->
+          <!-- <img :src="post.fields.thumbnail.fields.file.url" :alt="post.fields.heroImage.fields.description" width="320"/> -->
+      </header>
+      <div class="post-body content">
+        <div v-html="$md.render(post.fields.body)"></div>
       </div>
-    </section>
-
+    </article>
   </div>
 </template>
 
@@ -74,23 +59,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.hero.is-large {
-  background-size: cover;
-  background-position: center center;
-}
-.content {
-  p {
-    font-size: 1.1em;
+header {
+  background-color: white;
+  padding: 100px 0;
+  .title {
+    width: 800px;
+    margin: 0 auto 20px;
   }
 }
-@media screen and (min-width: 1088px) {
-  .container {
-    max-width: 740px;
-  }
+.post-body {
+  width: 600px;
+  margin: 30px auto 50px;
 }
-@media screen and (max-width: 767px) {
-  #hero-image {
-    height: 350px;
-  }
+
+.tags-container {
+  margin-left: 20px;
 }
 </style>

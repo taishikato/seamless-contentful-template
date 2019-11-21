@@ -1,36 +1,24 @@
 <template>
-  <b-navbar>
+  <b-navbar wrapper-class="container">
     <template slot="brand">
-      <b-navbar-item tag="router-link" :to="{ path: '/' }">
-      {{ title }}
+      <b-navbar-item>
+        <n-link class="title" to="/">
+          {{ title }}
+        </n-link>
       </b-navbar-item>
     </template>
     <template slot="start">
-      <b-navbar-item href="#">
-        Home
+      <b-navbar-item>
+        <p class="subtitle">
+          Headless blog
+        </p>
       </b-navbar-item>
-      <b-navbar-item href="#">
-        Documentation
-      </b-navbar-item>
-      <b-navbar-dropdown label="Info">
-        <b-navbar-item href="#">
-          About
-        </b-navbar-item>
-        <b-navbar-item href="#">
-          Contact
-        </b-navbar-item>
-      </b-navbar-dropdown>
     </template>
     <template slot="end">
       <b-navbar-item tag="div">
-        <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
-        </div>
+        <n-link to="/about" class="has-text-grey-dark">
+          About
+        </n-link>
       </b-navbar-item>
     </template>
   </b-navbar>
@@ -41,7 +29,7 @@ export default {
   name: 'Navbar',
   data() {
     return {
-      title: process.env.NUXT_ENV_TITLE
+      title: process.env.NUXT_ENV_TITLE || 'Seamless'
     }
   }
 }

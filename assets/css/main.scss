@@ -1,0 +1,22 @@
+img.is-rounded {
+    border-radius: 50%;
+}
+
+iframe[src^="https://www.google.com/"] {
+    height: 450px;
+}
+iframe[src^="https://www.youtube.com/"] {
+    height: 315px;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-j-center {
+    justify-content: center;
+}
+
+.flex-center {
+    align-items: center;
+}

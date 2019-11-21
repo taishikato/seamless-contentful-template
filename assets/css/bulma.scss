@@ -1,0 +1,12 @@
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+
+$navbar-height: 5rem;
+$card-shadow: none;
+// $body-background-color: #ecf0f1;
+$body-background-color: #f5efe0;
+$input-shadow: none;
+
+// Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";

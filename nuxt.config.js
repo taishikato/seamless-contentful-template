@@ -11,7 +11,8 @@ const { createClient } = require('./plugins/contentful')
 const cdaClient = createClient(ctfConfig)
 
 export default {
-  mode: 'universal',
+  // mode: 'universal',
+  mode: 'spa',
   /*
    ** Headers of the page
    */
@@ -35,7 +36,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['~/assets/css/bulma', '~/assets/css/main'],
   /*
    ** Plugins to load before mounting the App
    */
