@@ -5,12 +5,6 @@
         <div class="container columns is-gapless">
           <div class="column is-4">
             <a href="/">
-              <img
-                src="~/assets/img/taishikato.png"
-                alt="加藤大志プロフィール写真"
-                class="is-rounded"
-                width="150"
-              />
             </a>
           </div>
           <div class="column profile-text content is-size-5 has-text-left has-text-weight-medium">

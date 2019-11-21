@@ -43,9 +43,9 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  devModules: [
+  buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    // '@nuxtjs/eslint-module'
   ],
   /*
    ** Nuxt.js modules
@@ -70,7 +70,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) { }
   },
 
   /*
@@ -82,26 +82,26 @@ export default {
    ** - portfolio posts
    ** - available portfolio post tags
    */
-   generate: {
-     routes() {
-       return Promise.all([
-         // get all portfolio posts
-         cdaClient.getEntries({
-           content_type: ctfConfig.CTF_BLOG_POST_TYPE_ID
-         })
-         // get the portfolio post content type
-         // cmaClient.getSpace(ctfConfig.CTF_SPACE_ID)
-         //   .then(space => space.getContentType(ctfConfig.CTF_BLOG_POST_TYPE_ID))
-       ]).then(([entries, postType]) => {
-         return [
-           // map entries to URLs
-           ...entries.items.map(entry => `/article/${entry.fields.slug}`)
-           // map all possible tags to URLs
-           // ...postType.fields.find(field => field.id === 'tags').items.validations[0].in.map(tag => `/tags/${tag}`)
-         ];
-       });
-     }
-   },
+  generate: {
+    routes() {
+      return Promise.all([
+        // get all portfolio posts
+        cdaClient.getEntries({
+          content_type: ctfConfig.CTF_BLOG_POST_TYPE_ID
+        })
+        // get the portfolio post content type
+        // cmaClient.getSpace(ctfConfig.CTF_SPACE_ID)
+        //   .then(space => space.getContentType(ctfConfig.CTF_BLOG_POST_TYPE_ID))
+      ]).then(([entries, postType]) => {
+        return [
+          // map entries to URLs
+          ...entries.items.map(entry => `/article/${entry.fields.slug}`)
+          // map all possible tags to URLs
+          // ...postType.fields.find(field => field.id === 'tags').items.validations[0].in.map(tag => `/tags/${tag}`)
+        ]
+      })
+    }
+  },
   /*
    ** Define environment variables being available
    ** in generate and browser context
