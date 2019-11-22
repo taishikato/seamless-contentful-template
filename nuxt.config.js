@@ -11,8 +11,8 @@ const { createClient } = require('./plugins/contentful')
 const cdaClient = createClient(ctfConfig)
 
 export default {
-  // mode: 'universal',
-  mode: 'spa',
+  mode: 'universal',
+  // mode: 'spa',
   /*
    ** Headers of the page
    */
