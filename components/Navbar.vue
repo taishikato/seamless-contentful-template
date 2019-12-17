@@ -14,13 +14,6 @@
         </p>
       </b-navbar-item>
     </template>
-    <template slot="end">
-      <b-navbar-item tag="div">
-        <n-link to="/about" class="has-text-grey-dark">
-          About
-        </n-link>
-      </b-navbar-item>
-    </template>
   </b-navbar>
 </template>
 
