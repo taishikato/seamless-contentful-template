@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <div class="top-article-list">
+    <div v-if="posts.length > 0" class="top-article-list">
       <article v-for="post in posts" :key="post.sys.id">
         <header>
           <!-- {{ post.fields }} -->
@@ -15,15 +15,18 @@
         </div>
       </article>
     </div>
+    <div v-else>
+      No post yet
+    </div>
   </section>
 </template>
 
 <script>
-import {createClient} from '~/plugins/contentful.js'
+import { createClient } from '~/plugins/contentful.js'
 const client = createClient()
 
 export default {
-  asyncData ({ env }) {
+  asyncData({ env }) {
     return Promise.all([
       client.getEntries({
         'sys.id': env.CTF_PERSON_ID
@@ -32,12 +35,16 @@ export default {
         'content_type': env.CTF_BLOG_POST_TYPE_ID,
         order: '-sys.createdAt'
       })
-    ]).then(([entries, posts]) => {
-      return {
-        person: entries.items[0],
-        posts: posts.items
-      }
-    }).catch(console.error);
+    ])
+      .then(([entries, posts]) => {
+        return {
+          person: entries.items[0],
+          posts: posts.items
+        }
+    })
+      .catch((err) => {
+        console.error(err)
+      })
   }
 }
 </script>
